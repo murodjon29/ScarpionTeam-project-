@@ -3,6 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
+import { TeachersModule } from './teachers/teachers.module';
+import { GroupsTeachersModule } from './groups-teachers/groups-teachers.module';
+import { Teachers } from './teachers/models/teacher.model';
+import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -19,8 +23,10 @@ import { ConfigModule } from '@nestjs/config';
       logging: false,
       synchronize: true,
       autoLoadModels: true,
-      models: []
-    })
+      models: [Teachers, Group_teachers]
+    }),
+    TeachersModule,
+    GroupsTeachersModule
   ],
   controllers: [AppController],
   providers: [AppService],
