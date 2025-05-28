@@ -1,7 +1,7 @@
 import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { Books } from 'src/books/models/book.model';
 
-@Table({ tableName: 'Teachers' }) // << tableName should match plural naming
+@Table({ tableName: 'Teachers' }) 
 export class Teachers extends Model {
   @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
   declare id: number;
@@ -20,4 +20,5 @@ export class Teachers extends Model {
 
   @HasMany(() => Books)
   declare books: Books[];
+  
 }

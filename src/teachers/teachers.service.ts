@@ -14,7 +14,7 @@ import { where } from 'sequelize';
 
 @Injectable()
 export class TeachersService {
-  constructor(@InjectModel(Teachers) private model: typeof Teachers) {}
+  constructor(@InjectModel(Teachers) private model: typeof Teachers) { }
   async create(createTeacherDto: CreateTeacherDto) {
     try {
       const { full_name, email, password, specialist } = createTeacherDto;
@@ -36,7 +36,7 @@ export class TeachersService {
 
   async findAll() {
     try {
-      const teachers = await this.model.findAll();
+      const teachers = await this.model.findAll({ include: { all: true } });
       return { statusCode: 200, message: 'Success', data: teachers };
     } catch (error) {
       throw new InternalServerErrorException();
@@ -45,7 +45,7 @@ export class TeachersService {
 
   async findOne(id: number) {
     try {
-      const teacher = await this.model.findByPk(id);
+      const teacher = await this.model.findByPk(id, { include: { all: true } });
       if (!teacher) {
         return { statusCode: 404, message: 'Not found', data: {} };
       }
