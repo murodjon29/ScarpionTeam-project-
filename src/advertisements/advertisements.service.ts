@@ -34,4 +34,5 @@ export class AdvertisementsService {
     const advertisement = await this.model.destroy({where: {id}});
     return {statusCode: 200, message: "Success", data: {} };
   }
+
 }
