@@ -7,6 +7,9 @@ import { TeachersModule } from './teachers/teachers.module';
 import { GroupsTeachersModule } from './groups-teachers/groups-teachers.module';
 import { Teachers } from './teachers/models/teacher.model';
 import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
+import { AdminModule } from './admin/admin.module';
+import config from './config';
+import { Admin } from './admin/models/admin.model';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -23,12 +26,14 @@ import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
       logging: false,
       synchronize: true,
       autoLoadModels: true,
-      models: [Teachers, Group_teachers]
+      models: [Teachers, Group_teachers,Admin]
     }),
     TeachersModule,
-    GroupsTeachersModule
+    GroupsTeachersModule,
+    AdminModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+
