@@ -10,6 +10,9 @@ import { GroupsTeachersModule } from './groups-teachers/groups-teachers.module';
 import { Teachers } from './teachers/models/teacher.model';
 import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
 
+import { AdvertisementsModule } from './advertisements/advertisements.module'; // import qilish
+import { VacanciesModule } from './vacancies/vacancies.module'; // import qilish
+
 import { Books } from './books/models/book.model';
 import { BooksModule } from './books/books.module';
 
@@ -22,6 +25,7 @@ import { Admin } from './admin/models/admin.model';
 
 import { VideosofprojectsModule } from './videos-of-projects/videosofprojects.module';
 import { GroupsStudentsModule } from './groups-students/groups-students.module';
+
 import config from './config';
 
 @Module({
@@ -55,8 +59,10 @@ import config from './config';
     BooksModule,
     ProjectsModule,
     AdminModule,
-    VideosOfProjects,
+    VideosofprojectsModule,
     GroupsStudentsModule,
+    AdvertisementsModule,
+    VacanciesModule
   ],
   controllers: [AppController],
   providers: [AppService],
