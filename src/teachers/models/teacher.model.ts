@@ -1,10 +1,4 @@
-import {
-  Column,
-  DataType,
-  HasMany,
-  Model,
-  Table,
-} from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { Books } from 'src/books/models/book.model';
 
 @Table({ tableName: 'Teachers' }) // << tableName should match plural naming

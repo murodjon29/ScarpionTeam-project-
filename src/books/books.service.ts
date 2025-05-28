@@ -12,11 +12,11 @@ export class BooksService {
   async create(createBookDto: CreateBookDto) {
     try {
       console.log(createBookDto);
-      
-      const book = await this.model.create({...createBookDto});     
+
+      const book = await this.model.create({ ...createBookDto });
       return { statusCode: 201, message: 'Success', data: book };
     } catch (error) {
-      throw new Error("Book adding error:", error)
+      throw new Error('Book adding error:', error);
     }
   }
 
@@ -31,7 +31,9 @@ export class BooksService {
 
   async findOne(id: number) {
     try {
-      const book = await this.model.findByPk(id, { include: { model: Teachers } });
+      const book = await this.model.findByPk(id, {
+        include: { model: Teachers },
+      });
       if (!book) {
         return { statusCode: 404, message: 'Not found', data: {} };
       }
@@ -43,7 +45,10 @@ export class BooksService {
 
   async update(id: number, updateBookDto: UpdateBookDto) {
     try {
-      const book = await this.model.update(updateBookDto, { where: { id }, returning: true });
+      const book = await this.model.update(updateBookDto, {
+        where: { id },
+        returning: true,
+      });
       return { statusCode: 200, message: 'Success', data: book[1][0] };
     } catch (error) {
       throw new InternalServerErrorException();

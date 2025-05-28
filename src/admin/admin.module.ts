@@ -5,7 +5,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Admin } from './models/admin.model';
 
 @Module({
-  imports:[SequelizeModule.forFeature([Admin])],
+  imports: [SequelizeModule.forFeature([Admin])],
   controllers: [AdminController],
   providers: [AdminService],
 })

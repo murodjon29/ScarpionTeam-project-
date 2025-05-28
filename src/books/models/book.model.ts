@@ -20,16 +20,15 @@ export class Books extends Model {
   declare description: string;
 
   @Column({ type: DataType.STRING })
-  declare author: string;   
+  declare author: string;
 
-@ForeignKey(() => Teachers)
-@Column({
-  type: DataType.INTEGER,
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE',
-})
-declare teacher_id: number;
-
+  @ForeignKey(() => Teachers)
+  @Column({
+    type: DataType.INTEGER,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  declare teacher_id: number;
 
   @BelongsTo(() => Teachers)
   declare teacher: Teachers;

@@ -7,7 +7,9 @@ import { Project } from 'src/projects/models/project.model';
 
 @Injectable()
 export class VideosOfProjectsService {
-  constructor(@InjectModel(VideosOfProjects) private model: typeof VideosOfProjects) {}
+  constructor(
+    @InjectModel(VideosOfProjects) private model: typeof VideosOfProjects,
+  ) {}
 
   async create(createVideoDto: CreateVideosofprojectDto) {
     try {
@@ -29,7 +31,9 @@ export class VideosOfProjectsService {
 
   async findOne(id: number) {
     try {
-      const video = await this.model.findByPk(id, { include: { model: Project } });
+      const video = await this.model.findByPk(id, {
+        include: { model: Project },
+      });
       if (!video) {
         return { statusCode: 404, message: 'Not found', data: {} };
       }
@@ -41,7 +45,10 @@ export class VideosOfProjectsService {
 
   async update(id: number, updateVideoDto: UpdateVideosofprojectDto) {
     try {
-      const video = await this.model.update(updateVideoDto, { where: { id }, returning: true });
+      const video = await this.model.update(updateVideoDto, {
+        where: { id },
+        returning: true,
+      });
       return { statusCode: 200, message: 'Success', data: video[1][0] };
     } catch (error) {
       throw new InternalServerErrorException();

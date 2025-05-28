@@ -1,16 +1,16 @@
-import { Column,DataType,Model, Table } from "sequelize-typescript";
-import { Col } from "sequelize/types/utils";
-import { Roles } from "src/enum";
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Col } from 'sequelize/types/utils';
+import { Roles } from 'src/enum';
 
-@Table({tableName:'admin'})
-export class Admin extends Model{
-    @Column({
-        type:DataType.STRING,
-        allowNull:false,
-    })
-    username:string;
+@Table({ tableName: 'admin' })
+export class Admin extends Model {
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  username: string;
 
-    @Column({
+  @Column({
     type: DataType.STRING,
     allowNull: false,
   })
