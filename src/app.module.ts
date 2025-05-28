@@ -7,6 +7,8 @@ import { TeachersModule } from './teachers/teachers.module';
 import { GroupsTeachersModule } from './groups-teachers/groups-teachers.module';
 import { Teachers } from './teachers/models/teacher.model';
 import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
+import { AdvertisementsModule } from './advertisements/advertisements.module';
+import { VacanciesModule } from './vacancies/vacancies.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -26,7 +28,9 @@ import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
       models: [Teachers, Group_teachers]
     }),
     TeachersModule,
-    GroupsTeachersModule
+    GroupsTeachersModule,
+    AdvertisementsModule,
+    VacanciesModule
   ],
   controllers: [AppController],
   providers: [AppService],
