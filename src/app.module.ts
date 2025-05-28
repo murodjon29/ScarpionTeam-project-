@@ -7,6 +7,11 @@ import { TeachersModule } from './teachers/teachers.module';
 import { GroupsTeachersModule } from './groups-teachers/groups-teachers.module';
 import { Teachers } from './teachers/models/teacher.model';
 import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
+import { Books } from './books/models/book.model';
+import { BooksModule } from './books/books.module';
+import { ProjectsModule } from './projects/projects.module';
+import { VideosOfProjects } from './videos-of-projects/models/videosofproject.model';
+import { Project } from './projects/models/project.model';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -23,10 +28,13 @@ import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
       logging: false,
       synchronize: true,
       autoLoadModels: true,
-      models: [Teachers, Group_teachers]
+      models: [Teachers, Group_teachers, Books, VideosOfProjects, Project]
     }),
     TeachersModule,
-    GroupsTeachersModule
+    GroupsTeachersModule,
+    BooksModule,
+    ProjectsModule,
+    VideosOfProjects
   ],
   controllers: [AppController],
   providers: [AppService],
