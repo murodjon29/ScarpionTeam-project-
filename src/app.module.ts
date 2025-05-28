@@ -7,11 +7,16 @@ import { TeachersModule } from './teachers/teachers.module';
 import { GroupsTeachersModule } from './groups-teachers/groups-teachers.module';
 import { Teachers } from './teachers/models/teacher.model';
 import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
+
+import { AdvertisementsModule } from './advertisements/advertisements.module';
+import { VacanciesModule } from './vacancies/vacancies.module';
+
 import { Books } from './books/models/book.model';
 import { BooksModule } from './books/books.module';
 import { ProjectsModule } from './projects/projects.module';
 import { VideosOfProjects } from './videos-of-projects/models/videosofproject.model';
 import { Project } from './projects/models/project.model';
+
 import { AdminModule } from './admin/admin.module';
 import config from './config';
 import { Admin } from './admin/models/admin.model';
@@ -42,7 +47,9 @@ import { Admin } from './admin/models/admin.model';
     }),
     TeachersModule,
     GroupsTeachersModule,
-    AdminModule
+    AdvertisementsModule,
+    VacanciesModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
