@@ -18,4 +18,5 @@ export class Group_teachers extends Model{
     })
     teacher: Teachers
 
+
 }
