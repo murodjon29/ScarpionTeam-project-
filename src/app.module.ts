@@ -12,6 +12,9 @@ import { BooksModule } from './books/books.module';
 import { ProjectsModule } from './projects/projects.module';
 import { VideosOfProjects } from './videos-of-projects/models/videosofproject.model';
 import { Project } from './projects/models/project.model';
+import { AdminModule } from './admin/admin.module';
+import config from './config';
+import { Admin } from './admin/models/admin.model';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -35,8 +38,14 @@ import { Project } from './projects/models/project.model';
     BooksModule,
     ProjectsModule,
     VideosOfProjects
+      models: [Teachers, Group_teachers,Admin]
+    }),
+    TeachersModule,
+    GroupsTeachersModule,
+    AdminModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+
