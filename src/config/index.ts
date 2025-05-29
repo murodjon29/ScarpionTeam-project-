@@ -8,4 +8,10 @@ export default {
   PG_USER: String(process.env.PG_USER),
   PG_PASS: String(process.env.PG_PASS),
   PG_DB: String(process.env.PG_DB),
+  ACCESS_TOKEN_KEY: String(process.env.ACCESS_TOKEN_KEY),
+  ACCESS_TOKEN_TIME: String(process.env.ACCESS_TOKEN_TIME),
+  REFRESH_TOKEN_KEY: String(process.env.REFRESH_TOKEN_KEY),
+  REFRESH_TOKEN_TIME: String(process.env.REFRESH_TOKEN_TIME)
 };
+
+
