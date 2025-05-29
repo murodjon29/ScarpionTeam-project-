@@ -9,6 +9,8 @@ import { GroupsTeachersModule } from './groups-teachers/groups-teachers.module';
 
 import { Teachers } from './teachers/models/teacher.model';
 import { Group_teachers } from './groups-teachers/models/groups-teacher.model';
+import { VideosOfTeachersModule } from './videos-of-teachers/videos-of-teachers.module';
+import { Videos_of_teachers } from './videos-of-teachers/models/videos-of-teacher.model';
 
 import { AdvertisementsModule } from './advertisements/advertisements.module'; // import qilish
 import { VacanciesModule } from './vacancies/vacancies.module'; // import qilish
