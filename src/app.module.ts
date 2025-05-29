@@ -51,6 +51,7 @@ import config from './config';
         Group_teachers,
         Books,
         VideosOfProjects,
+        Videos_of_teachers,
         Project,
         Admin,
       ],
@@ -64,7 +65,8 @@ import config from './config';
     VideosofprojectsModule,
     GroupsStudentsModule,
     AdvertisementsModule,
-    VacanciesModule
+    VacanciesModule,
+    VideosOfTeachersModule
   ],
   controllers: [AppController],
   providers: [AppService],

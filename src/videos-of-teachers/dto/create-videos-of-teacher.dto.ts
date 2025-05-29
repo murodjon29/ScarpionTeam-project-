@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString } from "class-validator"
 
 export class CreateVideosOfTeacherDto {
-    @IsNotEmpty()
+   @IsNotEmpty()
     @IsString()
     name: string
 
@@ -9,5 +9,10 @@ export class CreateVideosOfTeacherDto {
     @IsString()
     description: string
 
-    // url: string
+    @IsNotEmpty()
+    @IsString()
+    url: string
+
+    @IsNotEmpty()
+    teacher_id: number
 }
