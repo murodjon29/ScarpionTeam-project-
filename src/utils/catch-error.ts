@@ -10,3 +10,4 @@ export const handleError = (error: any) => {
         throw new InternalServerErrorException(error?.message)
     }
 }
+

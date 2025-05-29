@@ -16,11 +16,7 @@ export class Admin extends Model {
   })
   hashed_password: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-    unique: true,
-  })
+  @Column({ type: DataType.STRING, allowNull: false, unique: true })
   email: string;
 
   @Column({
