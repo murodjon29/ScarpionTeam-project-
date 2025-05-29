@@ -1,1 +1,3 @@
-export class CreateGroupsTeacherDto {}
+export class CreateGroupsTeacherDto {
+    
+}

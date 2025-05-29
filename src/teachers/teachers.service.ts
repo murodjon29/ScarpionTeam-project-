@@ -9,13 +9,11 @@ import { UpdateTeacherDto } from './dto/update-teacher.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Teachers } from './models/teacher.model';
 import { encrypt } from 'src/utils/encrypt-bcrypt';
-import { NotFoundError } from 'rxjs';
-import { where } from 'sequelize';
 
 @Injectable()
 export class TeachersService {
   constructor(@InjectModel(Teachers) private model: typeof Teachers) { }
-  async create(createTeacherDto: CreateTeacherDto) {
+  async create(createTeacherDto: CreateTeacherDto): Promise<Object> {
     try {
       const { full_name, email, password, specialist } = createTeacherDto;
       if (await this.model.findOne({ where: { email } })) {
@@ -34,18 +32,18 @@ export class TeachersService {
     }
   }
 
-  async findAll() {
+  async findAll(): Promise<Object> {
     try {
-      const teachers = await this.model.findAll({ include: { all: true } });
-      return { statusCode: 200, message: 'Success', data: teachers };
+      const teachers = await this.model.findAll({include: {all: true}})
+      return { statusCode: 200, message: "Success", data: teachers }
     } catch (error) {
       throw new InternalServerErrorException();
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: number): Promise<Object> {
     try {
-      const teacher = await this.model.findByPk(id, { include: { all: true } });
+      const teacher = await this.model.findByPk(id, {include: {all: true}})
       if (!teacher) {
         return { statusCode: 404, message: 'Not found', data: {} };
       }
@@ -55,7 +53,7 @@ export class TeachersService {
     }
   }
 
-  async update(id: number, updateTeacherDto: UpdateTeacherDto) {
+  async update(id: number, updateTeacherDto: UpdateTeacherDto): Promise<Object> {
     try {
       if (!(await this.model.findByPk(id))) {
         return { statusCode: 404, message: 'Not found', data: {} };
@@ -70,7 +68,7 @@ export class TeachersService {
     }
   }
 
-  async remove(id: number) {
+  async remove(id: number): Promise<Object> {
     try {
       if (!(await this.model.findByPk(id))) {
         return { statusCode: 404, message: 'Not found', data: {} };
