@@ -3,6 +3,9 @@ import {
   ConflictException,
   Injectable,
   OnModuleInit,
+  Injectable,
+  ConflictException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
@@ -18,6 +21,7 @@ import { writeToCookie } from 'src/utils/write-cookie';
 import { Response } from 'express';
 
 @Injectable()
+
 export class AdminService implements OnModuleInit {
   constructor(
     @InjectModel(Admin) private adminModel: typeof Admin,
@@ -54,11 +58,28 @@ export class AdminService implements OnModuleInit {
       const admin = await this.adminModel.create({
         ...createAdminDto,
         hashed_password: hashedPassword,
+export class AdminService {
+  constructor(@InjectModel(Admin) private adminModel: typeof Admin) {}
+
+  async createSuperAdmin(createAdminDto: CreateAdminDto): Promise<object> {
+    try {
+      const { username, password, email } = createAdminDto;
+      const existEmail = await this.adminModel.findOne({ where: { email } });
+      if (existEmail) {
+        throw new ConflictException('Email address already exists');
+      }
+      const hashedPassword = await encrypt(password);
+      const superadmin = await this.adminModel.create({
+        ...createAdminDto,
+        hashed_password: hashedPassword,
+        role: Roles.SUPERADMIN,
       });
       return {
         statusCode: 201,
         message: 'success',
         data: admin,
+        data: superadmin,
+
       };
     } catch (error) {
       return handleError(error);
@@ -97,5 +118,6 @@ export class AdminService implements OnModuleInit {
       return handleError(error);
     }
   }
+}
 }
 

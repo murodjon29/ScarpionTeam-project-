@@ -21,6 +21,7 @@ import { AuthGuard } from 'src/guards/auth.guard';
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
+
   @UseGuards(AuthGuard)
   @Post()
   async createAdmin(@Body() createAdminDto: CreateAdminDto): Promise<object> {
@@ -33,5 +34,12 @@ export class AdminController {
     @Res({ passthrough: true }) res: Response,
   ): Promise<object> {
     return this.adminService.signInAdmin(signInAdminDto, res);
+
+  @Post('super')
+  async createSuperAdmin(
+    @Body() createAdminDto: CreateAdminDto,
+  ): Promise<object> {
+    return this.adminService.createSuperAdmin(createAdminDto);
+
   }
 }

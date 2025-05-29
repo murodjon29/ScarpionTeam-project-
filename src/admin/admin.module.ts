@@ -7,6 +7,7 @@ import { TokenService } from 'src/utils/generate-token';
 import { JwtModule } from '@nestjs/jwt';
 
 @Module({
+
   imports: [
     SequelizeModule.forFeature([Admin]),
     JwtModule.register({
@@ -14,6 +15,9 @@ import { JwtModule } from '@nestjs/jwt';
       signOptions: { expiresIn: '1h' }, 
     }),
   ],
+
+  imports: [SequelizeModule.forFeature([Admin])],
+
   controllers: [AdminController],
   providers: [AdminService, TokenService],
 })
